@@ -1,5 +1,6 @@
 import com.sun.jna.Library;
 import com.sun.jna.Native;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +13,8 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class test {
-    public static void main(String[] args) {
+    @Test
+    public  void Test_xianbank() {
         //System.out.println(System.getProperty("java.library.path"));
        // System.out.println("开始");
 
