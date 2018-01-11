@@ -26,7 +26,7 @@ public class Test_xa {
         WebDriver webDriver = new ChromeDriver();
         webDriver.get("https://www.baidu.com/");
 
-
+/*
         File ieFile = new File("drivers/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", ieFile.getAbsolutePath());
         DesiredCapabilities ieCaps = DesiredCapabilities.internetExplorer();
@@ -54,6 +54,7 @@ public class Test_xa {
 
         DD.INSTANCE.DD_str("123456"); //�ַ���
         webDriver.quit();
+        */
     }
 
     public interface DD extends Library {
