@@ -21,14 +21,17 @@ public class Test_xa {
         //DD.INSTANCE.DD_mov(500, 500);   //�����ƶ�
         //DD.INSTANCE.DD_movR(100, 100); //����ƶ�
         //DD.INSTANCE.DD_btn(4);DD.INSTANCE.DD_btn(8); //����Ҽ�
-
+        System.getProperties().setProperty("webdriver.chrome.driver", "drivers/chromedriver_windows.exe");
+        //开启新WebDriver进程
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.get("https://www.baidu.com/");
 
 
         File ieFile = new File("drivers/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", ieFile.getAbsolutePath());
         DesiredCapabilities ieCaps = DesiredCapabilities.internetExplorer();
         ieCaps.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, "https://www.baidu.com/");
-        WebDriver webDriver = new InternetExplorerDriver(ieCaps);
+         webDriver = new InternetExplorerDriver(ieCaps);
 
         //配置ChromeDiver
         //System.getProperties().setProperty("webdriver.chrome.driver", "drivers/chromedriver_windows.exe");
