@@ -12,11 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class test {
+public class Test_xa {
     @Test
     public  void Test_xianbank() {
         //System.out.println(System.getProperty("java.library.path"));
-       // System.out.println("开始");
+        System.out.println("开始");
 
         //DD.INSTANCE.DD_mov(500, 500);   //�����ƶ�
         //DD.INSTANCE.DD_movR(100, 100); //����ƶ�
