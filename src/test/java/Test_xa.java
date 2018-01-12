@@ -2,6 +2,7 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -21,18 +22,19 @@ public class Test_xa {
         //DD.INSTANCE.DD_mov(500, 500);   //�����ƶ�
         //DD.INSTANCE.DD_movR(100, 100); //����ƶ�
         //DD.INSTANCE.DD_btn(4);DD.INSTANCE.DD_btn(8); //����Ҽ�
-        System.getProperties().setProperty("webdriver.chrome.driver", "drivers/chromedriver_windows.exe");
+       // System.getProperties().setProperty("webdriver.chrome.driver", "drivers/chromedriver_windows.exe");
         //开启新WebDriver进程
-        WebDriver webDriver = new ChromeDriver();
-        webDriver.get("https://www.baidu.com/");
+       // WebDriver webDriver = new ChromeDriver();
+       // webDriver.get("https://www.baidu.com/");
 
-/*
+
         File ieFile = new File("drivers/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", ieFile.getAbsolutePath());
         DesiredCapabilities ieCaps = DesiredCapabilities.internetExplorer();
         ieCaps.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, "https://www.baidu.com/");
-         webDriver = new InternetExplorerDriver(ieCaps);
-
+         WebDriver webDriver = new InternetExplorerDriver(ieCaps);
+        final JavascriptExecutor js=((JavascriptExecutor)webDriver);
+        webDriver.manage().window().maximize();
         //配置ChromeDiver
         //System.getProperties().setProperty("webdriver.chrome.driver", "drivers/chromedriver_windows.exe");
         //开启新WebDriver进程
@@ -49,12 +51,21 @@ public class Test_xa {
         //webDriver.findElement(By.id("password_pge")).click();
         //DD.INSTANCE.DD_key(601, 1);
        // DD.INSTANCE.DD_key(601, 2); //����win
-        DD.INSTANCE.DD_mov(705, 531);
-        DD.INSTANCE.DD_btn(1);
 
+      //  网页可见区域高： document.body.clientHeight
+             //   　屏幕分辨率的高： window.screen.height
+                //　屏幕可用工作区高度： window.screen.availHeight
+
+        int availHeight= Integer.parseInt(js.executeScript("return  window.outerHeight").toString());
+        int clientHeight= Integer.parseInt(js.executeScript("return  window.innerHeight").toString());
+        int elementheight=webDriver.findElement(By.id("password_pge")).getLocation().getY();
+        int elementwidth=webDriver.findElement(By.id("password_pge")).getLocation().getX();
+        int toobarheight=availHeight-clientHeight;
+        DD.INSTANCE.DD_mov(elementwidth+10,elementheight+toobarheight-10);
+        DD.INSTANCE.DD_btn(1);
         DD.INSTANCE.DD_str("123456"); //�ַ���
         webDriver.quit();
-        */
+
     }
 
     public interface DD extends Library {
